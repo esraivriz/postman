@@ -1,0 +1,174 @@
+{
+	"info": {
+		"_postman_id": "760010ee-32d6-4d1d-ad1b-2b9c97c8b3f9",
+		"name": "Api Chaning",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/booking",
+			"_postman_id": "a03e083d-3811-4547-a25f-bf75bc51f183",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "https://restful-booker.herokuapp.com/booking"
+			},
+			"response": []
+		},
+		{
+			"name": "/booking/id",
+			"_postman_id": "f77b330c-9c0b-4f36-9fb3-a3ae3c97e4db",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "admin",
+						"password": "password123"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "{{BaseUrl}}{{bookingid}}"
+			},
+			"response": []
+		},
+		{
+			"name": "/booking",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "00bbc092-7044-4bd2-bc6a-bfee44db9f31",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Body lastname Temel\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Dursun\");\r",
+							"});\r",
+							"\r",
+							"const payload=pm.response.json()\r",
+							"\r",
+							"pm.environment.set(\"bookingid\", payload.bookingid);\r",
+							"pm.environment.set(\"firstname\", payload.booking.firstname);\r",
+							"pm.environment.set(\"lastname\", payload.booking.lastname);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "5cc2869b-a01c-49d6-9bb6-318cf7c8cfef",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstname\" : \"Fatma\",\r\n    \"lastname\" : \"Ay\",\r\n    \"totalprice\" : 111,\r\n    \"depositpaid\" : true,\r\n    \"bookingdates\" : {\r\n        \"checkin\" : \"2023-02-07\",\r\n        \"checkout\" : \"2023-02-11\"\r\n    },\r\n    \"additionalneeds\" : \"Breakfast\"\r\n}\r\n\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{BaseUrl}}"
+			},
+			"response": []
+		},
+		{
+			"name": "/booking/id",
+			"_postman_id": "4611303c-0e15-4cc7-ab1a-5d1f720be2c5",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "admin",
+						"password": "password123"
+					}
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstname\" : \"ylzERDN\",\r\n    \"lastname\" : \"cemretuana\",\r\n    \"totalprice\" : 111,\r\n    \"depositpaid\" : true,\r\n    \"bookingdates\" : {\r\n        \"checkin\" : \"2023-01-25\",\r\n        \"checkout\" : \"2023-01-30\"\r\n    },\r\n    \"additionalneeds\" : \"Breakfast\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://restful-booker.herokuapp.com/booking/5539"
+			},
+			"response": []
+		},
+		{
+			"name": "/booking/id",
+			"_postman_id": "9e6a6593-4682-4d5a-b766-328c4e0f556d",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "admin",
+						"password": "password123"
+					}
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"firstname\" : \"Ayhan\",\r\n\"lastname\" : \"Ser\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://restful-booker.herokuapp.com/booking/5539"
+			},
+			"response": []
+		},
+		{
+			"name": "/booking/id",
+			"_postman_id": "078d8783-3cde-42b6-9b36-162202ff9b33",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "admin",
+						"password": "password123"
+					}
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": "https://restful-booker.herokuapp.com/booking/5539"
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"id": "5c15ddf6-688c-407f-a85e-e387b0a18aab",
+			"key": "url",
+			"value": "https://9c56f48a-902a-437c-97c4-eda1894832e2.mock.pstmn.io",
+			"type": "string"
+		}
+	]
+}
